@@ -93,8 +93,7 @@ def main_process():
 					continue  # 重新进入下一个课程项
 
 			try:
-				nextPageXpath = f'//*[@id="main"]/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div[4]/div[2]/ul/li[{pageIndex + 1}]/a'
-				# print(nextPageXpath)
+				nextPageXpath = f'//*[@id="main"]/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div[4]/div[2]/ul/li[{pageIndex + 2}]/a'
 				driver.find_element(by=By.XPATH, value=nextPageXpath).click()
 				time.sleep(2)
 			except NoSuchElementException:
@@ -103,7 +102,6 @@ def main_process():
 	except Exception as e:
 		print(f"程序遇到异常：{e}，正在退出")
 		driver.quit()
+		return main_process()
 
 main_process()
-
-driver.quit()
